@@ -1,0 +1,27 @@
+import requests
+import json
+import os
+
+def upload_to_drive(file_path, access_token):
+    url = "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart"
+    headers = {"Authorization": f"Bearer {access_token}"}
+    
+    metadata = {
+        'name': os.path.basename(file_path),
+        'mimeType': 'video/mp4'
+    }
+    
+    files = {
+        'data': ('metadata', json.dumps(metadata), 'application/json'),
+        'file': open(file_path, 'rb')
+    }
+    
+    response = requests.post(url, headers=headers, files=files)
+    
+    if response.status_code == 200:
+        file_id = response.json().get('id')
+        print(f"File uploaded successfully! ID: {file_id}")
+        return file_id
+    else:
+        print(f"Failed to upload. Error: {response.text}")
+        return None
