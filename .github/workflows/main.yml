@@ -1,4 +1,4 @@
-name: Alpha Ghost Studio Runner
+
 
 on:
   schedule:
@@ -26,4 +26,4 @@ jobs:
           STUDIO_EMAIL: ${{ secrets.STUDIO_EMAIL }}
           STUDIO_PASSWORD: ${{ secrets.STUDIO_PASSWORD }}
           GOOGLE_CLOUD_API_KEY: ${{ secrets.GOOGLE_CLOUD_API_KEY }}
-        run: python main.py
+        run: 
