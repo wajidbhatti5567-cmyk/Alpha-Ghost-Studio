@@ -59,3 +59,21 @@ def main():
 
 if __name__ == "__main__":
     main()
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          
+      - name: Run script
+        run: python main.py
+        env:
+          DRIVE_ACCESS_TOKEN: ${{ secrets.DRIVE_ACCESS_TOKEN }}
+          DRIVE_REFRESH_TOKEN: ${{ secrets.DRIVE_REFRESH_TOKEN }}
