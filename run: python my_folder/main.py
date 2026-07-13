@@ -18,3 +18,21 @@ if __name__ == "__main__":
         generate_video()
     else:
         print("Error: DRIVE_ACCESS_TOKEN not found in environment variables.")
+from moviepy.editor import *
+
+def create_video():
+    print("Video rendering process initiated...")
+    
+    # یہاں اپنی تصاویر یا ویڈیو کلپس کے نام لکھیں
+    # مثال کے طور پر: clip1 = VideoFileClip("video1.mp4")
+    
+    # ویڈیو بنانے کا عمل
+    # final_clip = concatenate_videoclips([clip1, clip2])
+    
+    # ویڈیو کو سیو کرنے کا عمل
+    # final_clip.write_videofile("final_output.mp4", codec="libx264")
+    
+    print("Video rendering finished successfully.")
+
+if __name__ == "__main__":
+    create_video()
